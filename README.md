@@ -105,7 +105,7 @@ Contributions are welcome! Please follow these steps:
 ## Author
 
 Developed by Waseeha M.  
-Feel free to connect on [LinkedIn](https://linkedin.com/) or email me at yourname@email.com.
+Feel free to connect on [LinkedIn](https://www.linkedin.com/in/waseeha-m-b7b42a262/) or email me at wasiwaseeha@email.com.
 
 ---
 
