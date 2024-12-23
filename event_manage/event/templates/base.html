@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management Dashboard</title>
+   <style>body {
+    font-family: Arial, sans-serif;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+nav ul li {
+    display: inline;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}</style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'event_list' %}">Events</a></li>
+           
+        </ul>
+    </nav>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

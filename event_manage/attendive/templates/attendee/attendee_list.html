@@ -1,0 +1,61 @@
+{% extends 'base.html' %} {% block content %}
+<center><h1>ATTENDEE MANAGEMENT</h1></center>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Assigned Events</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for attendee in attendees %}
+    <tr>
+      <td>{{ attendee.name }}</td>
+      <td>{{ attendee.email }}</td>
+      <td>
+        {% for event in attendee.events.all %} {{ event.name }}
+        {% if not forloop.last %}, {% endif %} 
+        {% endfor %}
+      </td>
+      <td>
+        <a href="{% url 'attendee_edit' attendee.id %}">Edit</a> |
+        <a href="{% url 'attendee_delete' attendee.id %}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a href="{% url 'attendee_create' %}" class='btn btn-primary'>Add New Attendee</a>
+{% endblock %}
+<style>
+  .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+</style>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Attendee Management</h1>
+<a href="{% url 'attendee_create' %}">Add New Attendee</a>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Assigned Events</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for attendee in attendees %}
+    <tr>
+      <td>{{ attendee.name }}</td>
+      <td>{{ attendee.email }}</td>
+      <td>
+        {% for event in attendee.events.all %} {{ event.name }}{% if not
+        forloop.last %}, {% endif %} {% endfor %}
+      </td>
+      <td>
+        <a href="{% url 'attendee_edit' attendee.id %}">Edit</a> |
+        <a href="{% url 'attendee_delete' attendee.id %}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

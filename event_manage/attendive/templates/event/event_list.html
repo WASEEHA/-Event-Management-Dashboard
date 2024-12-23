@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Event Management</h1>
+<a href="{% url 'event_create' %}">Add New Event</a>
+<table>
+   <thead>
+       <tr>
+           <th>Name</th>
+           <th>Description</th>
+           <th>Location</th>
+           <th>Date</th>
+           <th>Actions</th>
+       </tr>
+   </thead>
+   <tbody>
+       {% for event in events %}
+       <tr>
+           <td>{{ event.name }}</td>
+           <td>{{ event.description }}</td>
+           <td>{{ event.location }}</td>
+           <td>{{ event.date }}</td>
+           <td>
+               <a href="{% url 'event_edit' event.id %}">Edit</a> |
+               <a href="{% url 'event_delete' event.id %}">Delete</a>
+           </td>
+       </tr>
+       {% endfor %}
+   </tbody>
+</table>
+{%endblock%}

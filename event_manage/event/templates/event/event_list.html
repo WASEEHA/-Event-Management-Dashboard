@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<center><h1>EVENT MANAGEMENT</h1></center>
+<table>
+   <thead>
+       <tr>
+           <th>Name</th>
+           <th>Description</th>
+           <th>Location</th>
+           <th>Date</th>
+           <th>Actions</th>
+       </tr>
+   </thead>
+   <tbody>
+       {% for event in events %}
+       <tr>
+           <td>{{ event.name }}</td>
+           <td>{{ event.description }}</td>
+           <td>{{ event.location }}</td>
+           <td>{{ event.date }}</td>
+           <td>
+               <a href="{% url 'event_edit' event.id %}">Edit</a> |
+               <a href="{% url 'event_delete' event.id %}">Delete</a>
+           </td>
+       </tr>
+       {% endfor %}
+   </tbody>
+</table>
+<a href="{% url 'event_create' %}" class="btn btn-primary">Add New Event</a>
+{%endblock%}
+<style>
+    .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  </style>

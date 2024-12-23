@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+<center><h1>TASK TRACKER</h1></center>
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Deadline</th>
+      <th>Status</th>
+      <th>Assigned Attendee</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for task in tasks %}
+    <tr>
+      <td>{{ task.name }}</td>
+      <td>{{ task.deadline }}</td>
+      <td>{{ task.get_status_display }}</td>
+      <td>{{ task.assigned_attendee.name }}</td>
+      <td>
+        <a href="{% url 'task_edit' task.id %}">Edit</a> |
+        <a href="{% url 'task_delete' task.id %}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
